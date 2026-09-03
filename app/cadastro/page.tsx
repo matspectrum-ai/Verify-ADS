@@ -4,6 +4,7 @@ import Link from "next/link";
 import { FormEvent } from "react";
 import { AmbientBackground } from "../components/ambient-background";
 import { Brand } from "../components/brand";
+import styles from "./signup.module.css";
 
 function FieldIcon({ type }: { type: "user" | "email" | "lock" }) {
   const common = {
@@ -30,12 +31,12 @@ export default function SignupPage() {
   }
 
   return (
-    <main className="auth-page signup-page">
+    <main className="auth-page">
       <AmbientBackground compact />
       <div className="auth-wrap">
         <div className="auth-brand"><Brand size="md" centered /></div>
-        <div className="auth-card signup-auth-card">
-          <div className="auth-card-line signup-card-line" />
+        <div className={`auth-card ${styles.signupCard}`}>
+          <div className={`auth-card-line ${styles.signupLine}`} />
           <header>
             <h1>Criar conta gratuita</h1>
             <p>Sem cartão de crédito • Configuração em 3 minutos</p>
@@ -55,7 +56,7 @@ export default function SignupPage() {
                 <input type="email" required autoComplete="email" placeholder="seu@email.com" />
               </div>
             </label>
-            <div className="signup-password-grid">
+            <div className={styles.passwordGrid}>
               <label>
                 <span>Senha</span>
                 <div className="field-wrap">
@@ -71,7 +72,7 @@ export default function SignupPage() {
                 </div>
               </label>
             </div>
-            <button className="signup-submit" type="submit">Criar Minha Conta Grátis</button>
+            <button className={styles.submitButton} type="submit">Criar Minha Conta Grátis</button>
           </form>
           <p className="signup-copy">Já tem conta? <Link href="/login">Fazer login</Link></p>
         </div>
