@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./parity.css";
 
 export const metadata: Metadata = {
   title: "VerifyAds — Verifique sua Empresa no Facebook e Desbloqueie Recursos Exclusivos",
