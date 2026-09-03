@@ -29,27 +29,6 @@
   .secondary-cta {
     width: auto;
   }
-
-  .benefits-section {
-    padding: 96px 16px;
-  }
-
-  .steps-section,
-  .pricing-section {
-    padding: 112px 16px;
-  }
-
-  .section-title {
-    margin-bottom: 56px;
-  }
-
-  .benefits-grid {
-    gap: 20px;
-  }
-
-  .benefit-card {
-    padding: 24px;
-  }
 }
 
 .area-button > span[aria-hidden="true"] {
