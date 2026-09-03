@@ -47,3 +47,12 @@ jobs:
 
       - name: E2E public contract
         run: npm run test:e2e -- --project=chromium
+
+      - name: Upload local visual evidence
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-public-evidence
+          path: local-evidence
+          if-no-files-found: error
+          retention-days: 7
