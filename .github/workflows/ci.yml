@@ -37,7 +37,7 @@ jobs:
         run: node scripts/capture-target-public.mjs
 
       - name: Upload public target evidence
-        if: always() && github.ref == 'refs/heads/reconstruction/m0-discovery'
+        if: success() && github.ref == 'refs/heads/reconstruction/m0-discovery'
         uses: actions/upload-artifact@v4
         with:
           name: target-public-evidence
