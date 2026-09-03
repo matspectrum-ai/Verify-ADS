@@ -7,6 +7,7 @@ const OUTPUT = path.resolve("target-evidence");
 const routes = [
   { id: "home", path: "/" },
   { id: "login", path: "/login" },
+  { id: "signup", path: "/cadastro" },
   { id: "privacy", path: "/l/privacidade" },
   { id: "terms", path: "/l/termos" },
 ];
@@ -22,6 +23,18 @@ const runSummary = {
   capturedAt: new Date().toISOString(),
   routes: [],
 };
+
+async function revealScrollAnimations(page) {
+  const height = await page.evaluate(() => document.documentElement.scrollHeight);
+  const viewportHeight = await page.evaluate(() => window.innerHeight);
+  const step = Math.max(480, Math.floor(viewportHeight * 0.72));
+  for (let y = 0; y <= height; y += step) {
+    await page.evaluate((position) => window.scrollTo({ top: position, behavior: "instant" }), y);
+    await page.waitForTimeout(260);
+  }
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await page.waitForTimeout(700);
+}
 
 for (const route of routes) {
   const routeSummary = { id: route.id, path: route.path, captures: [] };
@@ -69,6 +82,8 @@ for (const route of routes) {
       result.finalUrl = page.url();
       result.title = await page.title();
       result.ok = Boolean(response?.ok());
+
+      if (route.id === "home") await revealScrollAnimations(page);
 
       await page.screenshot({
         path: path.join(OUTPUT, `${prefix}.png`),
@@ -122,7 +137,7 @@ for (const route of routes) {
             if (name.startsWith("--")) cssVariables[name] = rootStyle.getPropertyValue(name).trim();
           }
           const sampledStyles = Array.from(document.querySelectorAll("header,nav,main,section,footer,h1,h2,h3,p,a,button,input"))
-            .slice(0, 180)
+            .slice(0, 220)
             .map((el) => {
               const style = getComputedStyle(el);
               const rect = el.getBoundingClientRect();
@@ -147,6 +162,8 @@ for (const route of routes) {
                   padding: style.padding,
                   margin: style.margin,
                   gap: style.gap,
+                  opacity: style.opacity,
+                  transform: style.transform,
                 },
               };
             });
@@ -172,7 +189,7 @@ for (const route of routes) {
           ...result,
           dom,
           cookieNames: cookies.map((cookie) => cookie.name),
-          requests: requests.slice(0, 1000),
+          requests: requests.slice(0, 1200),
           consoleMessages: consoleMessages.slice(0, 300),
         };
 
