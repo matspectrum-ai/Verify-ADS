@@ -4,6 +4,8 @@ out
 coverage
 playwright-report
 test-results
+local-evidence
+local-evidence/**
 auth-evidence-private
 auth-evidence-private/**
 .env
