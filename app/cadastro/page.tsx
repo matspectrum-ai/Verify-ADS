@@ -31,7 +31,7 @@ export default function SignupPage() {
   }
 
   return (
-    <main className="auth-page">
+    <main className={`auth-page ${styles.signupPage}`}>
       <AmbientBackground compact />
       <div className="auth-wrap">
         <div className="auth-brand"><Brand size="md" centered /></div>
