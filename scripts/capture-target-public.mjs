@@ -3,7 +3,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const TARGET_ORIGIN = "https://score-scanner-7q2s.vercel.app";
-const OUTPUT = path.resolve(".target-evidence");
+const OUTPUT = path.resolve("target-evidence");
 const routes = [
   { id: "home", path: "/" },
   { id: "login", path: "/login" },
