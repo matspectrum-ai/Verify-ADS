@@ -3,71 +3,41 @@
 Status: discovery in progress.
 Target: `https://score-scanner-7q2s.vercel.app/`
 
-## Observed routes
+## Public route inventory
 
-| Route | Status | Evidence |
+| Route | Evidence status | Current replica status |
 | --- | --- | --- |
-| `/` | OBSERVED | Public landing page is reachable. |
-| `/login` | OBSERVED route existence | Public CTAs and footer link to this route. Page body is not yet captured in this environment. |
-| `/l/privacidade` | OBSERVED route existence | Footer link. Page body not yet captured. |
-| `/l/termos` | OBSERVED route existence | Footer link. Page body not yet captured. |
+| `/` | OBSERVED | Implemented from captured DOM/style evidence; visual diff still pending. |
+| `/login` | OBSERVED UI | Implemented UI; real auth behavior intentionally not fabricated. |
+| `/cadastro` | ROUTE OBSERVED, UI CAPTURE PENDING | Not implemented until current CI capture is inspected. |
+| `/l/privacidade` | OBSERVED | Implemented from captured content/layout. |
+| `/l/termos` | OBSERVED | Implemented from captured content/layout. |
 
-## Public landing inventory
+## Public navigation contracts
+- Header: `Benefícios -> #beneficios`, `Como Funciona -> #como-funciona`, `Planos -> #planos`, `Minha Área -> /login`.
+- Hero: `Acessar Minha Área -> /login`, `Ver Benefícios -> #beneficios`.
+- Pricing: Starter, Business and Agency CTAs all point to `/cadastro`.
+- Footer: Privacidade, Termos, Login.
+- Login: signup link -> `/cadastro`; back link -> `/`.
 
-### Header
-- Brand: `Verify Ads`
-- CTA/link: `Minha Área`
-
-### Hero
-- Eyebrow: `Plataforma Oficial de Verificação para Meta Business`
-- Heading: `Verifique sua Empresa no Facebook e Desbloqueie Recursos Exclusivos`
-- Description: domain connection, verified landing page, larger ad limits and WhatsApp Business API, advertised as under three minutes.
-- Primary CTA: `Acessar Minha Área`
-- Secondary CTA: `Ver Benefícios`
-- Trust line: `Sem cartão de crédito • Configuração em 3 minutos • Suporte em português`
-
-### Benefits
-Observed cards:
-1. `+2.000 Envios no WhatsApp`
-2. `Limite de até $100k/dia`
-3. `Criar Apps no Facebook`
-4. `Proteção Contra Imposores`
-5. `Selo Azul de Verificação`
-6. `Suporte Prioritário Meta`
-
-Observed metrics:
-- `2.000+` / `Envios WhatsApp`
-- `$100k` / `Limite Diário Possível`
-- `< 3min` / `Para Configurar`
-- `100%` / `Automatizado`
-
-### Three-step process
-1. `Cadastre e Adicione seu Domínio`
-2. `Configure o DNS em Minutos`
-3. `Verifique e Ative sua Empresa`
-
-### Pricing
-- Starter — `$100/mês` — 4 domains.
-- Business — `$150/mês` — 8 domains — marked `Mais Popular`.
-- Agency — `$200/mês` — 12 domains.
-
-### Footer
-- Brand: `Verify Ads`
-- Copyright: `© 2026 VerifyAds. Todos os direitos reservados.`
-- Links: Privacidade, Termos, Login.
+## Public homepage sections
+1. Sticky navigation / VerifyAds mark.
+2. Hero.
+3. Benefits (`#beneficios`).
+4. Metrics strip.
+5. Three-step process (`#como-funciona`).
+6. Pricing (`#planos`).
+7. Footer.
 
 ## Authenticated application
+Status: UNKNOWN.
 
-Status: UNKNOWN in this environment. Credentials were supplied by the owner for a test account, but browser automation in the current runtime is blocked from outbound navigation. Do not commit or document those credentials.
+Credentials were supplied out-of-band in the conversation for a test account. They are intentionally not stored in the repository, documentation, workflow YAML, artifacts or logs.
 
 ## Next discovery targets
-- Login UI and validation behavior.
-- Post-login default route.
-- Auth/session behavior.
-- Dashboard navigation tree.
-- Domain CRUD.
-- DNS verification workflow and polling behavior.
-- Landing page generation workflow.
-- Billing/subscription behavior.
-- API contracts and error states.
-- Responsive layouts and visual baselines.
+1. Capture and reconstruct `/cadastro`.
+2. Produce scroll-revealed desktop/mobile homepage screenshots and visual-diff the replica.
+3. Securely execute authenticated discovery using repository secrets or another non-public credential channel.
+4. Capture post-login default route and full navigation tree.
+5. Capture API requests/responses for auth/session and each domain/DNS workflow.
+6. Build route coverage and state matrices before implementing authenticated behavior.
