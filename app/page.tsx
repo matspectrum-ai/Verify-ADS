@@ -60,7 +60,7 @@ export default function HomePage() {
             <a href="#como-funciona">Como Funciona</a>
             <a href="#planos">Planos</a>
           </div>
-          <Link href="/login" className="area-button">Minha Área <span>›</span></Link>
+          <Link href="/login" className="area-button">Minha Área <span aria-hidden="true">›</span></Link>
         </div>
       </nav>
 
@@ -69,7 +69,7 @@ export default function HomePage() {
         <h1>Verifique sua Empresa <span className="gradient-text hero-gradient">no Facebook</span><br />e Desbloqueie<br className="hero-mobile-break" /> Recursos Exclusivos</h1>
         <p>Conecte seu domínio, gere sua landing page verificada e tenha acesso a limites maiores de anúncios, WhatsApp Business API — em menos de 3 minutos.</p>
         <div className="hero-actions">
-          <Link href="/login" className="primary-cta shimmer-card">Acessar Minha Área <span>→</span></Link>
+          <Link href="/login" className="primary-cta shimmer-card">Acessar Minha Área <span aria-hidden="true">→</span></Link>
           <a href="#beneficios" className="secondary-cta">Ver Benefícios</a>
         </div>
         <small>Sem cartão de crédito • Configuração em 3 minutos • Suporte em português</small>
