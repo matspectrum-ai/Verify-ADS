@@ -52,14 +52,20 @@
   }
 }
 
-.area-button svg {
+.area-button > span[aria-hidden="true"] {
   width: 14px;
   height: 14px;
-  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 14px;
+  line-height: 1;
 }
 
-.primary-cta svg {
+.primary-cta > span[aria-hidden="true"] {
   width: 20px;
   height: 20px;
-  flex: 0 0 auto;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 20px;
+  line-height: 1;
 }
