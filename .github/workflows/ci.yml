@@ -41,8 +41,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: target-public-evidence
-          path: .target-evidence
-          if-no-files-found: warn
+          path: target-evidence
+          if-no-files-found: error
           retention-days: 7
 
       - name: E2E public contract
