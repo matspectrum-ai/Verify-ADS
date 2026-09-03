@@ -25,9 +25,9 @@ const steps = [
 ] as const;
 
 const plans = [
-  { name: "Starter", price: "$100", domains: 4, features: ["4 domínios verificados", "Landing pages automáticas", "Verificação DNS em tempo real", "Relatório de status", "Suporte por email"] },
+  { name: "Starter", price: "$100", domains: 4, popular: false, features: ["4 domínios verificados", "Landing pages automáticas", "Verificação DNS em tempo real", "Relatório de status", "Suporte por email"] },
   { name: "Business", price: "$150", domains: 8, popular: true, features: ["8 domínios verificados", "Landing pages automáticas", "Verificação DNS em tempo real", "Relatório detalhado", "Suporte prioritário", "Pixel do Facebook integrado"] },
-  { name: "Agency", price: "$200", domains: 12, features: ["12 domínios verificados", "Landing pages automáticas", "Verificação DNS em tempo real", "Dashboard completo", "Suporte dedicado", "Pixel do Facebook integrado", "White label disponível"] },
+  { name: "Agency", price: "$200", domains: 12, popular: false, features: ["12 domínios verificados", "Landing pages automáticas", "Verificação DNS em tempo real", "Dashboard completo", "Suporte dedicado", "Pixel do Facebook integrado", "White label disponível"] },
 ] as const;
 
 function Icon({ name }: { name: string }) {
