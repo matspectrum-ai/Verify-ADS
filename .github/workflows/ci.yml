@@ -10,7 +10,7 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,6 +31,19 @@ jobs:
 
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
+
+      - name: Capture public target evidence
+        if: github.ref == 'refs/heads/reconstruction/m0-discovery'
+        run: node scripts/capture-target-public.mjs
+
+      - name: Upload public target evidence
+        if: always() && github.ref == 'refs/heads/reconstruction/m0-discovery'
+        uses: actions/upload-artifact@v4
+        with:
+          name: target-public-evidence
+          path: .target-evidence
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: E2E public contract
         run: npm run test:e2e -- --project=chromium
