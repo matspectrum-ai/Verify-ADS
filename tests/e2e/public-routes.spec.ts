@@ -12,6 +12,21 @@ test.describe("observed public routes", () => {
     await expect(page.getByRole("link", { name: "← Voltar ao início", exact: true })).toHaveAttribute("href", "/");
   });
 
+  test("signup reproduces the captured public form contract", async ({ page }) => {
+    await page.goto("/cadastro");
+    await expect(page.getByRole("heading", { name: "Criar conta gratuita", exact: true })).toBeVisible();
+    await expect(page.getByText("Sem cartão de crédito • Configuração em 3 minutos", { exact: true })).toBeVisible();
+    await expect(page.getByPlaceholder("Seu nome")).toHaveAttribute("type", "text");
+    await expect(page.getByPlaceholder("seu@email.com")).toHaveAttribute("type", "email");
+    const passwordFields = page.getByPlaceholder("••••••••");
+    await expect(passwordFields).toHaveCount(2);
+    await expect(passwordFields.nth(0)).toHaveAttribute("type", "password");
+    await expect(passwordFields.nth(1)).toHaveAttribute("type", "password");
+    await expect(page.getByRole("button", { name: "Criar Minha Conta Grátis", exact: true })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Fazer login", exact: true })).toHaveAttribute("href", "/login");
+    await expect(page.getByRole("link", { name: "← Voltar ao início", exact: true })).toHaveAttribute("href", "/");
+  });
+
   test("privacy route reproduces the captured content", async ({ page }) => {
     await page.goto("/l/privacidade");
     await expect(page.getByRole("heading", { name: "Política de Privacidade", exact: true })).toBeVisible();
